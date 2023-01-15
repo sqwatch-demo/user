@@ -1,5 +1,5 @@
 function get_results(result) {
-    print(tojson(result));
+    print(JSON.stringify(result));
 }
 
 function insert_customer(object) {
