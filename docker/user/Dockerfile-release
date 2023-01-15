@@ -1,14 +1,19 @@
-FROM golang:1.7-alpine
+FROM golang:1.19-alpine
 
-COPY . /go/src/github.com/microservices-demo/user/
-WORKDIR /go/src/github.com/microservices-demo/user/
+RUN mkdir /src
+COPY . /src
+WORKDIR /src
 
 RUN apk update
 RUN apk add git
-RUN go get -v github.com/Masterminds/glide 
-RUN glide install && CGO_ENABLED=0 go build -a -installsuffix cgo -o /user main.go
+#RUN go get -v github.com/Masterminds/glide
+#RUN glide install && CGO_ENABLED=0 go build -a -installsuffix cgo -o /user main.go
+RUN go get ./... && \
+    go mod vendor
+RUN go build main.go && \
+    mv main /user
 
-FROM alpine:3.4
+FROM alpine:3.17.1
 
 ENV	SERVICE_USER=myuser \
 	SERVICE_UID=10001 \
