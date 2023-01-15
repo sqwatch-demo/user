@@ -10,8 +10,8 @@ import (
 	"io"
 	"time"
 
-	"github.com/microservices-demo/user/db"
-	"github.com/microservices-demo/user/users"
+	"github.com/sqwatch-demo/user/db"
+	"github.com/sqwatch-demo/user/users"
 )
 
 var (

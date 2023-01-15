@@ -5,7 +5,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/microservices-demo/user/users"
+	"github.com/sqwatch-demo/user/users"
 )
 
 var (

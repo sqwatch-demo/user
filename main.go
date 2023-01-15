@@ -14,12 +14,12 @@ import (
 
 	"github.com/go-kit/kit/log"
 	kitprometheus "github.com/go-kit/kit/metrics/prometheus"
-	"github.com/microservices-demo/user/api"
-	"github.com/microservices-demo/user/db"
-	"github.com/microservices-demo/user/db/mongodb"
 	stdopentracing "github.com/opentracing/opentracing-go"
 	zipkin "github.com/openzipkin/zipkin-go-opentracing"
 	stdprometheus "github.com/prometheus/client_golang/prometheus"
+	"github.com/sqwatch-demo/user/api"
+	"github.com/sqwatch-demo/user/db"
+	"github.com/sqwatch-demo/user/db/mongodb"
 	commonMiddleware "github.com/weaveworks/common/middleware"
 )
 

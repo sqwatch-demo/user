@@ -1,7 +1,7 @@
 #User Service
-[![Build Status](https://travis-ci.org/microservices-demo/user.svg?branch=master)](https://travis-ci.org/microservices-demo/user)
-[![Coverage Status](https://coveralls.io/repos/github/microservices-demo/user/badge.svg?branch=master)](https://coveralls.io/github/microservices-demo/user?branch=master)
-[![Go Report Card](https://goreportcard.com/badge/github.com/microservices-demo/user)](https://goreportcard.com/report/github.com/microservices-demo/user)
+[![Build Status](https://travis-ci.org/sqwatch-demo/user.svg?branch=master)](https://travis-ci.org/sqwatch-demo/user)
+[![Coverage Status](https://coveralls.io/repos/github/sqwatch-demo/user/badge.svg?branch=master)](https://coveralls.io/github/sqwatch-demo/user?branch=master)
+[![Go Report Card](https://goreportcard.com/badge/github.com/sqwatch-demo/user)](https://goreportcard.com/report/github.com/sqwatch-demo/user)
 [![](https://images.microbadger.com/badges/image/weaveworksdemos/user.svg)](http://microbadger.com/images/weaveworksdemos/user "Get your own image badge on microbadger.com")
 
 This service covers user account storage, to include cards and addresses
@@ -11,7 +11,7 @@ We'd love to see community contributions. We like to keep it simple and use Gith
 
 >## API Spec
 
-Checkout the API Spec [here](http://microservices-demo.github.io/api/index?url=https://raw.githubusercontent.com/microservices-demo/user/master/apispec/user.json)
+Checkout the API Spec [here](http://sqwatch-demo.github.io/api/index?url=https://raw.githubusercontent.com/sqwatch-demo/user/master/apispec/user.json)
 
 >## Build
 
