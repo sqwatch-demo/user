@@ -3,12 +3,14 @@ package main
 import (
 	"flag"
 	"fmt"
+	"github.com/cenkalti/backoff/v4"
 	"net"
 	"net/http"
 	"os"
 	"os/signal"
 	"strings"
 	"syscall"
+	"time"
 
 	corelog "log"
 
@@ -96,17 +98,21 @@ func main() {
 		}
 		stdopentracing.InitGlobalTracer(tracer)
 	}
-	dbconn := false
-	for !dbconn {
+	ebo := backoff.NewExponentialBackOff()
+	ebo.InitialInterval = 100 * time.Millisecond
+	ebo.MaxInterval = 5 * time.Second
+	ebo.MaxElapsedTime = 30 * time.Second
+	if err := backoff.Retry(func() error {
 		err := db.Init()
 		if err != nil {
 			if err == db.ErrNoDatabaseSelected {
-				corelog.Fatal(err)
+				panic(err)
 			}
-			corelog.Print(err)
-		} else {
-			dbconn = true
 		}
+		return err
+	}, ebo); err != nil {
+		corelog.Fatal(fmt.Sprintf("cannot connect to db: %v", err))
+		return
 	}
 
 	fieldKeys := []string{"method"}

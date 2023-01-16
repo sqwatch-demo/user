@@ -28,7 +28,7 @@ ENV USER_DATABASE mongodb
 ENV MONGO_HOST user-db
 
 WORKDIR /
-EXPOSE 8080
+EXPOSE 80
 COPY --from=0 /user /
 
 RUN	chmod +x /user && \
@@ -36,4 +36,4 @@ RUN	chmod +x /user && \
 
 USER ${SERVICE_USER}
 
-CMD ["/user", "-port=8080"]
+CMD ["/user", "-port=80"]
