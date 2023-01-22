@@ -1,11 +1,11 @@
-NAME = weaveworksdemos/user
-DBNAME = weaveworksdemos/user-db
+NAME = sqwatch-demo/user
+DBNAME = sqwatch-demo/user-db
 INSTANCE = user
 TESTDB = weaveworkstestuserdb
 OPENAPI = $(INSTANCE)-testopenapi
 GROUP = weaveworksdemos
 
-TAG=$(TRAVIS_COMMIT)
+TAG=latest
 
 default: docker
 
@@ -85,3 +85,16 @@ clean: cleandocker
 	rm -rf bin
 	rm -rf docker/user/bin
 	rm -rf vendor
+
+release: BUILDER?=minikube image
+release: NAME?=sqwatch-demo/user
+release: TAG?=latest
+release:
+	$(BUILDER) build -t $(NAME):$(TAG) docker/user/Dockerfile-release .
+
+release-db: BUILDER ?= minikube image
+release-db: NAME ?= sqwatch-demo/user-db
+release-db: TAG ?= latest
+release-db:
+	$(BUILDER) build -t $(NAME):$(TAG) docker/user-db/Dockerfile docker/user-db/
+
