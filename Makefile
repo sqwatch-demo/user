@@ -90,11 +90,12 @@ release: BUILDER?=minikube image
 release: NAME?=sqwatch-demo/user
 release: TAG?=latest
 release:
-	$(BUILDER) build -t $(NAME):$(TAG) docker/user/Dockerfile-release .
+	$(BUILDER) build -t $(NAME):$(TAG) -f docker/user/Dockerfile-release .
 
 release-db: BUILDER ?= minikube image
-release-db: NAME ?= sqwatch-demo/user-db
+release-db: DBNAME ?= sqwatch-demo/user-db
 release-db: TAG ?= latest
 release-db:
-	$(BUILDER) build -t $(NAME):$(TAG) docker/user-db/Dockerfile docker/user-db/
+	cd docker/user-db && \
+	$(BUILDER) build -t $(DBNAME):$(TAG) -f Dockerfile .
 
